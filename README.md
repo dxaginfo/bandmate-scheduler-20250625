@@ -2,65 +2,69 @@
 
 BandMate is a comprehensive web application designed to help bands and music groups efficiently schedule rehearsals, track attendance, send reminders, and suggest optimal rehearsal times based on member availability.
 
-## Features
+## 🎵 Features
 
-- **User Authentication and Management**
-  - Role-based permissions (Admin, Band Manager, Band Member)
-  - Band creation and member invitation system
+- **User Authentication & Management**
+  - Secure login and registration
+  - Role-based access control (Admin, Manager, Member)
+  - Profile management
+
+- **Band Management**
+  - Create and manage multiple bands
+  - Member invitation and management
+  - Band profile customization
 
 - **Availability Management**
-  - Members can mark their availability on a calendar
-  - Recurring availability patterns
+  - Weekly recurring availability settings
   - Blackout dates for unavailability
+  - Visual availability dashboard
 
 - **Rehearsal Scheduling**
-  - Create and manage rehearsal events
-  - Automatic conflict detection
-  - Venue/location selection and management
+  - Create single and recurring rehearsals
+  - Conflict detection
+  - Optimal time recommendation engine
+  - Venue management and booking
 
-- **Optimization Engine**
-  - Suggest optimal rehearsal times based on member availability
-  - Prioritize rehearsals for upcoming performances
-
-- **Notifications and Reminders**
-  - Email notifications for new rehearsals
-  - Configurable reminder system
+- **Notifications & Reminders**
+  - Customizable email notifications
+  - Push notifications
+  - Rehearsal reminders
 
 - **Attendance Tracking**
-  - Check-in system for rehearsals
-  - Attendance history and analytics
+  - RSVP functionality
+  - Check-in capability
+  - Attendance reporting and analytics
 
-- **Integration Capabilities**
-  - Calendar sync (Google Calendar, iCal)
-  - Export functionality (PDF, CSV)
+- **Calendar Integration**
+  - Export to iCal, Google Calendar
+  - Subscribe to band calendar
 
-## Technology Stack
+## 🚀 Technology Stack
 
 ### Frontend
 - React.js with TypeScript
 - Redux Toolkit for state management
-- Material-UI for UI components
-- FullCalendar.js for calendar views
+- Material-UI components
+- FullCalendar.js for calendar visualization
+- Formik with Yup validation
+- Axios for HTTP requests
 
 ### Backend
 - Node.js with Express
-- RESTful API design
+- RESTful API architecture
 - JWT authentication
-
-### Database
 - PostgreSQL with Prisma ORM
 - Redis for caching
 
 ### DevOps
-- Docker for containerization
-- GitHub Actions for CI/CD
-- Vercel for frontend hosting
-- Heroku for backend hosting
+- Docker containerization
+- CI/CD with GitHub Actions
+- Deployment on Vercel (frontend) and Heroku (backend)
 
-## Getting Started
+## ⚙️ Getting Started
 
 ### Prerequisites
-- Node.js (v18+)
+- Node.js 18+
 - Docker and Docker Compose
 - PostgreSQL
 - Redis
@@ -68,99 +72,92 @@ BandMate is a comprehensive web application designed to help bands and music gro
 ### Installation
 
 1. Clone the repository
-   ```
+   ```bash
    git clone https://github.com/dxaginfo/bandmate-scheduler-20250625.git
    cd bandmate-scheduler-20250625
    ```
 
 2. Install dependencies
-   ```
-   # Install frontend dependencies
+   ```bash
+   # Frontend
    cd frontend
    npm install
 
-   # Install backend dependencies
+   # Backend
    cd ../backend
    npm install
    ```
 
-3. Set up environment variables
-   ```
-   # In the backend directory
+3. Environment Setup
+   ```bash
+   # Backend
    cp .env.example .env
-   # Edit .env with your database configuration and other settings
+   # Edit .env file with your database credentials and other settings
    ```
 
-4. Start the development servers
+4. Database Setup
+   ```bash
+   # From backend directory
+   npx prisma migrate dev
+   npx prisma db seed
    ```
-   # Start the backend server
+
+5. Running the application
+   ```bash
+   # Using Docker
+   docker-compose up
+
+   # Or running individually
+   # Backend
    cd backend
    npm run dev
 
-   # Start the frontend server in another terminal
+   # Frontend
    cd frontend
    npm start
    ```
 
-5. The application will be available at:
-   - Frontend: http://localhost:3000
-   - Backend API: http://localhost:5000
+## 🔧 Development
 
-### Docker Setup
+### Backend Structure
+- `src/controllers/` - Request handlers
+- `src/routes/` - API routes
+- `src/models/` - Data models
+- `src/middleware/` - Custom middleware
+- `src/utils/` - Utility functions
+- `prisma/` - Database schema and migrations
 
-Alternatively, you can use Docker to run the entire application:
+### Frontend Structure
+- `src/components/` - Reusable UI components
+- `src/features/` - Feature-specific components and logic
+- `src/layouts/` - Page layouts
+- `src/pages/` - Page components
+- `src/store/` - Redux store configuration
+- `src/services/` - API service calls
 
-```
-docker-compose up
-```
+## 📊 Database Schema
 
-## Project Structure
+The application uses a PostgreSQL database with the following main entities:
+- Users
+- Bands
+- BandMembers
+- Venues
+- Rehearsals
+- Availability
+- BlackoutDates
+- RehearsalAttendance
+- Notifications
 
-```
-bandmate-scheduler/
-├── frontend/              # React frontend application
-│   ├── public/            # Static files
-│   ├── src/               # Source code
-│   │   ├── components/    # Reusable UI components
-│   │   ├── pages/         # Page components
-│   │   ├── features/      # Redux slices and features
-│   │   ├── services/      # API services
-│   │   └── utils/         # Utility functions
-│   └── package.json       # Frontend dependencies
-├── backend/               # Node.js backend application
-│   ├── src/               # Source code
-│   │   ├── controllers/   # Request handlers
-│   │   ├── models/        # Data models
-│   │   ├── routes/        # API routes
-│   │   ├── services/      # Business logic
-│   │   ├── middlewares/   # Custom middlewares
-│   │   └── utils/         # Utility functions
-│   └── package.json       # Backend dependencies
-├── docker-compose.yml     # Docker Compose configuration
-└── README.md              # Project documentation
-```
-
-## API Documentation
-
-API documentation is available at `/api/docs` when the server is running.
-
-## Contributing
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
-## License
+## 📝 License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
 
-## Acknowledgments
+## 🙏 Acknowledgements
 
-- [React.js](https://reactjs.org/)
+- [React](https://reactjs.org/)
 - [Node.js](https://nodejs.org/)
 - [Express](https://expressjs.com/)
 - [PostgreSQL](https://www.postgresql.org/)
+- [Prisma](https://www.prisma.io/)
 - [Material-UI](https://mui.com/)
 - [FullCalendar](https://fullcalendar.io/)
